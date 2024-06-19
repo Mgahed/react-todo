@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/logo.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://kit.fontawesome.com/c577277650.js" crossorigin="anonymous"></script>
+    <title>React Project Manager</title>
+</head>
+<body class="bg-white dark:bg-slate-800 dark:text-white">
+<div id="modal-root"></div>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+</body>
+<script>
+    // if there's no theme set, let's set it to light
+    if (!('theme' in localStorage)) {
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        // Whenever the user explicitly chooses light mode
+        localStorage.theme = 'light'
+
+        // Whenever the user explicitly chooses dark mode
+        localStorage.theme = 'dark'
+
+        // Whenever the user explicitly chooses to respect the OS preference
+        localStorage.removeItem('theme')
+    }
+</script>
+</html>
